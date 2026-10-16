@@ -13,12 +13,19 @@ The "wiki inside the repo." Start here: then follow links out to the authoritati
 TODO
 | Fill out a PR, issue, or ADR | [.github/pull_request_template.md](/.github/
 ), [.github/ISSUE_TEMPLATE/](/.github/), [governance/architecture-decision-records/](./governance/architecture-decision-records) |
+TODO
 | Know how CI/CD and deployment works | [standards/ci-cd-standards.md](./standards/ci-cd-standards.md), [standards/gitops-standards.md](./standards/gitops-standards.md) |
+TODO
 | Copy ready-to-use config into a new repo | [code-starter/](./code-starter) |
+TODO
 | Follow a day-to-day workflow (review, release, incident, etc.) | [workflows/](./workflows) |
+TODO
 | Report a security vulnerability | [SECURITY.md](./SECURITY.md) |
+TODO
 | Onboard to **this repo** specifically | [docs/onboarding.md](./docs/onboarding.md) |
+TODO
 | Troubleshoot a problem using this template | [docs/troubleshooting.md](./docs/troubleshooting.md) |
+TODO
 | "Run" this repo (it has no app - here's what that means) | [docs/how-to-run-repo.md](./docs/how-to-run-repo.md) |
 
 ## Repository Map
