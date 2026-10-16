@@ -107,7 +107,6 @@ If you're adopting this repo as a template/playbook for a new project, don't rea
 4. [standards/repository-architecture.md](./standards/repository-architecture.md) — monorepo vs. polyrepo; decide this before step 5 below, since it's expensive to reverse.
 
 **Tier 2 — decide/configure once, at project setup:**
-
 5. [standards/github-repo-setup.md](./standards/github-repo-setup.md) — create and secure the actual GitHub repo (security features, rulesets, CODEOWNERS).
 6. [governance/governance-model.md](./governance/governance-model.md) — roles, approval gates, and org/enterprise settings (owners, teams, SSO/2FA) if applicable.
 7. [standards/branching-strategy.md](./standards/branching-strategy.md) + [naming-conventions/branches.md](./naming-conventions/branches.md) — pick a branching model.
