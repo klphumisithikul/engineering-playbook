@@ -46,3 +46,7 @@ The roles/gates above apply within a single repository. If this template is used
 - ** Enforce two-factor authentication (2FA) ** for every account accessing the organization - non-negotiable, independet of repo-level controls.
 - ** Use SAML SSO ** if the organization is mostly private repos, to centralize identify/access through your IDP rather than per-account GitHub credentials
 - ** Enable security features org-wide by default ** (Dependabot, code scanning, secret scanning) rather than opting in per-repository - see [governance/security-practices.md] for the repo-level detail.
+- ** Restrict Default `GITHUB_TOKEN` Permissions ** at the org level so individual workflows must explicitly opt into elevated permission, not the reverse.
+- ** At the Enterprise Level **: minimize the number of organizations (fewer orgs -> better innersource visibility and discussion reach); keep repos organization-owned rather than user-owned (servives personnel changes, gets better admin/security tooling); use human-readable username if you control provisioning; periodically review an revoke stale access.
+
+This governance layer is what makes the repository-level controls in [standards/github-repo-setup.md] 
