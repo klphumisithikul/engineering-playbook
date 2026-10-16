@@ -20,4 +20,5 @@ Neither is "more industry standard" than the other - large tech companies run bo
 | Dependency management | Tools like Lerna, Bazel, Nx; centralize dependency versions | Git Submodules/Subtrees, or package managers (npm, Maven) for shared libs | 
 | Verstion control | A branching strategy that suits one shared hsitory - see [standards/branching-strategy.md](../standards/branching-strategy.md) | Consistent branching strategy *and* commit conventions across every repo, or coordination becaomes chaos |
 | CI/CD | Incremental builds - only rebuild changed directories/components | Per-repo pipelines, interconnected where needed - see [standards/ci-cd-standards.md](../standards/ci-cd-standards.md) |
-| Access control | [.github/C]()
+| Access control | [.github/CODEOWNERS](/.github/CODEOWNERS/) and role-based access within the one repo | Per-repository permissions - more granular, more to maintain | 
+| Release strategy | Feature flags and coordinated release branches to avoid shipping half-finished cross-component changes | [Semantic Versioning](https://semver.org/) per repo, with explicit cross-repo dependency-update poligices | 
