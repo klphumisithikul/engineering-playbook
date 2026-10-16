@@ -14,9 +14,11 @@ This repository also aligns its phase definitions with **ISO/IEC/IEEE 12207**, t
 | ------------------ | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **1. Planning**    | Define scope, goals, success criteria, and risks                   | [governance-model.md](./governance-model.md), [risk-management.md](./risk-management.md), issue templates                                                                                             |
 | **2. Design**      | Architecture, interfaces, data models, non-functional requirements | [architecture-decision-records/](./architecture-decision-records), [templates/architecture-tempate.md](../templates/architecture-template.md)                                                         |
+
 | **3. Development** | Implementation following standards                                 | [standards/](../standards), [naming-conventions/](../naming-conventions), [code-starter/](../code-starter)                                                                                            |
 | **4. Testing**     | Verification & validation against requirements                     | [standards/coding-standards.md](../standards/coding-standards.md)(testing section), `.github/workflows/ci.yml`                                                                                        |
 | **5. Deployment**  | Release to staging/production                                      | [standards/ci-cd-standards.md](../standards/ci-cd-standards.md), [standards/gitops-standards.md](../standards/gitops-standards.md), [workflows/release-workflow.md](../workflows/release-workflow.md) |
+
 | **6. Maintenance** | Monitoring, incident response, patching, deprecation               | [governance/risk-management.md](./risk-management.md), [workflows/incident-response-workflow.md](../workflows/incident-response-workflow.md), `SECURITY.md`                                           |
 
 These phases are **iterative, not strictly sequential** - in an Agile/DevOps model they repeat every sprint or every deploy not on pers propect.
@@ -41,6 +43,8 @@ This repo doesn't mandate Agile vs. Waterfall vs. DevOps -- pick what fits your 
 
 ## References
 
-- Sourcegraph, [SDLC Best Practices and Tools: A Complete Guide (2026)](https://sourcegraph.com/blog/sdlc-best-practices-and-tools-a-complete-guide-2026)
-- GeeksforGeeks, [Software Development Life Cycle (SDLC) Phases](https://www.geeksforgeeks.org/software-development-life-cycle-sdlc-phases/)
-- ISO/IEC/IEEE 12207:2026, _Systems and software engineering — Software life cycle processes_
+- Sourcegraph, [SDLC best practices and tools: A complete guide (2026)](https://sourcegraph.com/blog/sdlc-best-practices-and-tools-a-complete-guide-2026)
+- GeeksforGeeks, [Software Development Life Cycle (SDLC)
+](https://www.geeksforgeeks.org/software-engineering/software-development-life-cycle-sdlc/)
+- ISO [ISO/IEC/IEEE 12207:2026
+Systems and software engineering — Software life cycle processes](https://www.iso.org/standard/90219.html)
