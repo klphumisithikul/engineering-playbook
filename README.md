@@ -11,6 +11,7 @@ The engineering standards below are intentionally stack-agnostic — adapt the s
 ---
 
 ## Table of Contents
+
 - [Goals](#goals)
 - [Who Should Read This Document?](#who-should-read-this-document)
 - [Project Resources](#project-resources)
@@ -77,12 +78,12 @@ The repository includes the following key resources to guide contributors:
 
 ```
 engineering-playbook/
-├── .github/              Automation GitHub reads directly (workflows, issue/PR templates, CODEOWNERS)
-├── governance/            SDLC phases, decision rights, risk, security program, ADRs
+├── .github/                Automation GitHub reads directly (workflows, issue/PR templates, CODEOWNERS)
+├── governance/             SDLC phases, decision rights, risk, security program, ADRs
 ├── standards/              Coding/branching/commit/CI-CD/docker/gitops/GitHub-setup standards
 ├── naming-conventions/     Files, branches, variables, infra naming rules
 ├── pr-guidelines/          PR policy (size, review SLAs, checklists, industry standards)
-├── templates/              Fill-in-the-blank docs for new projects (README, architecture, API design...)
+├── templates/              Fill-in-the-blank docs for new projects (README, architecture, API design, testing, onboarding, etc.)
 ├── workflows/              Human process docs (code review, release, incident response)
 ├── code-starter/           Copy-paste config for a brand-new repo (.env.example, pre-commit, setup scripts)
 ├── docs/                   The docs index/wiki — start at docs/overview.md
@@ -97,7 +98,7 @@ See [docs/architecture.md](./docs/architecture.md) for why the docs are organize
 
 ### Suggested Reading Order
 
-If you're adopting this repo as a template/playbook for a new project, don't read everything front-to-back — most of it is reference material you'll come back to. Three tiers:
+If you're adopting this repo as a template/playbook for a new project, don't read everything front-to-back — most of it is reference material you'll come back to. This template/playbook is broken down into three tiers:
 
 **Tier 1 — read once, before touching anything:**
 1. This README (you're here).
