@@ -49,4 +49,4 @@ The roles/gates above apply within a single repository. If this template is used
 - ** Restrict Default `GITHUB_TOKEN` Permissions ** at the org level so individual workflows must explicitly opt into elevated permission, not the reverse.
 - ** At the Enterprise Level **: minimize the number of organizations (fewer orgs -> better innersource visibility and discussion reach); keep repos organization-owned rather than user-owned (servives personnel changes, gets better admin/security tooling); use human-readable username if you control provisioning; periodically review an revoke stale access.
 
-This governance layer is what makes the repository-level controls in [standards/github-repo-setup.md] 
+This governance layer is what makes the repository-level controls in [standards/github-repo-setup.md](../standards/github-repo-setup.md) actually hold - a repo's branch protection means little if organization owner access is sprawling and un-audited.

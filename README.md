@@ -330,7 +330,6 @@ If you fork this template for your own project, update the copyright line in `LI
 ---
 
 ## Final Notes
-
 Thank you for contributing! Please reach out to the team leads if you have any questions regarding the contribution process, workflows, or engineering standards.
 
 To enable or adjust branch protections, see GitHub's documentation on [configuring branch protection rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-branch-protection-rules).
