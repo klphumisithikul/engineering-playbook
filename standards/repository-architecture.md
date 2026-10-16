@@ -1,6 +1,6 @@
 # Repository Architecture: Monorepo vs. Polyrepo
 
-One of the earliest, hardest-to-reverse decisions for a new project (see [governance/architecture-decision-records/](../governance/architecture-decision-records/) - this is a textbook ADR candidate). Adapted from GitHub's own [Exploring repository architecture strategy](https://learn.github.com/well-architected/architecture/recommendations/scaling-git-repositories/repository-architecture-strategy) guide.
+One of the earliest, hardest-to-reverse decisions for a new project (see [governance/architecture-decision-records/](../governance/architecture-decision-records/) - this is a textbook ADR candidate). Adapted from GitHub's own [Well-Architected: Exploring repository architecture strategy](https://learn.github.com/well-architected/architecture/recommendations/scaling-git-repositories/repository-architecture-strategy) guide.
 
 ## The Decision
 
@@ -22,3 +22,10 @@ Neither is "more industry standard" than the other - large tech companies run bo
 | CI/CD | Incremental builds - only rebuild changed directories/components | Per-repo pipelines, interconnected where needed - see [standards/ci-cd-standards.md](../standards/ci-cd-standards.md) |
 | Access control | [.github/CODEOWNERS](/.github/CODEOWNERS/) and role-based access within the one repo | Per-repository permissions - more granular, more to maintain | 
 | Release strategy | Feature flags and coordinated release branches to avoid shipping half-finished cross-component changes | [Semantic Versioning](https://semver.org/) per repo, with explicit cross-repo dependency-update poligices | 
+
+## GitHub-Specific Implmentation
+
+Per the same GitHub's Well-Architected guide, once you've picked a model:
+- **Monorepo**: one GitHub repository, directories per module; GitHub Actions with path fileters (`on.push.paths`) for incremental/target builds; GitHub Packages for any pieces you still want independently version.
+- ** Polyrepo**: one GitHub repositoryper component, consistent naming (see [naming-convetions/files-and-folders.md](../naming-conventions/files-and-folders.md)), GitHub Packages for shared libraries so you're not hand-rolling dependcy distribution, and an org-level [GitHub Projects:Planning and tracking with Projects
+](https://docs.github.com/en/issues/planning-and-tracking-with-projects)
