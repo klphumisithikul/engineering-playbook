@@ -26,4 +26,10 @@ See [standards/github-repo-setup.md & 5. Protect Branches](/standards/github-rep
 ## GitHub Apps & Integration
 
 - Grant GitHub Apps and OAuth Apps the minimum repository/organization permissions they need - review the installed-Apps list (Settings -> Integration) periodically and remove anything unused.
-- Prefer
+- Prefer GitHub Apps over personal-access-token-based integrations where possible: Apps are scoped per-repository and don't inherit a human's full account permissions.
+- At the organization level, restrict which OAuth Apps members may approve without admin sign-off — see [governance/governance-model.md § GitHub Organization & Enterprise Governance](../governance/governance-model.md#github-organization--enterprise-governance).
+
+## Related
+- [standards/github-repo-setup.md](./github-repo-setup.md) — one-time checklist for a brand-new repository.
+- [standards/branching-strategy.md](./branching-strategy.md) — the merge policy that rulesets enforce.
+- [standards/commit-message-guidelines.md](./commit-message-guidelines.md) — commit style, enforced alongside the above.
