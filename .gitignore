@@ -1,0 +1,60 @@
+# ---- OS / Editor ----
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+*.sublime-*
+
+# ---- Environment & secrets ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---- Logs & runtime ----
+*.log
+logs/
+.cache/
+
+# ---- Node ----
+node_modules/
+dist/
+build/
+.next/
+.turbo/
+coverage/
+*.tsbuildinfo
+
+# ---- Python ----
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# ---- Go ----
+/bin/
+*.test
+
+# ---- Java / JVM ----
+target/
+*.class
+.gradle/
+
+# ---- Rust ----
+/target/
+Cargo.lock
+
+# ---- Docker / IaC ----
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# ---- Misc ----
+*.bak
+*.tmp
