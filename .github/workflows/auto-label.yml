@@ -1,0 +1,21 @@
+# Automatically labels PRs based on which files they touch, using the
+# config at .github/labeler.yml. Keeps CODEOWNERS-driven review routing
+# and label-based triage in sync without manual tagging.
+name: Auto Label
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v5
+        with:
+          configuration-path: .github/labeler.yml
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
