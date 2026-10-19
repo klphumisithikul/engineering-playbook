@@ -1,0 +1,31 @@
+# Flags inactive issues/PRs so they don't silently rot forever. Referenced
+# from workflows/code-review-workflow.md.
+name: Stale
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # daily, 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          days-before-stale: 60
+          days-before-close: 14
+          stale-issue-label: stale
+          stale-pr-label: stale
+          exempt-issue-labels: pinned,security
+          exempt-pr-labels: pinned,security
+          stale-issue-message: >
+            This issue has had no activity for 60 days and will be closed in
+            14 days if no further activity occurs. Comment to keep it open.
+          stale-pr-message: >
+            This PR has had no activity for 60 days and will be closed in 14
+            days if no further activity occurs. Comment or push to keep it open.
