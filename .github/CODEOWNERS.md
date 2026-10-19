@@ -1,10 +1,9 @@
 # CODEOWNERS
-# Automatically requests reviews from the right people/teams when a PR
-# touches matching paths. Replace the placeholders below with real
-# GitHub usernames or teams (e.g., @your-org/platform-team).
-#
-# Order matters: the LAST matching pattern in this file wins.
-# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+## Automatically requests reviews from the right people/teams when a PR touches matching paths. Replace the placeholders below with real GitHub usernames or teams (e.g., @your-org/platform-team).
+
+## Order matters: the LAST matching pattern in this file wins.
+
+## Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Default owners for everything in the repo, unless a later match overrides it
 * @your-org/maintainers
