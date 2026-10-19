@@ -1,0 +1,17 @@
+# Path-based auto-labeling config for .github/workflows/auto-label.yml.
+# Docs: https://github.com/actions/labeler
+documentation:
+  - changed-files:
+      - any-glob-to-any-file: ["**/*.md", "docs/**", "governance/**", "standards/**"]
+
+ci-cd:
+  - changed-files:
+      - any-glob-to-any-file: [".github/workflows/**", ".gitlab-ci.yml"]
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file: ["**/package.json", "**/requirements.txt", "**/go.mod", "**/Cargo.toml"]
+
+security:
+  - changed-files:
+      - any-glob-to-any-file: ["SECURITY.md", "governance/security-practices.md", ".github/dependabot.yml"]
