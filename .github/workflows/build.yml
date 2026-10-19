@@ -1,0 +1,43 @@
+# Multi-OS build validation matrix, per the SDLC "Testing" phase cross-platform
+# requirement. Runs the same build on macOS, Windows, and Linux to catch
+# platform-specific issues (path separators, case-sensitivity, line endings)
+# early. Stack-agnostic placeholder — fill in the real build command.
+name: Build (Multi-OS)
+
+on:
+  pull_request:
+  push:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- Node/TypeScript example ---
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 22
+      #     cache: npm
+      # - run: npm ci
+      # - run: npm run build
+
+      # --- Python example ---
+      # - uses: actions/setup-python@v5
+      #   with:
+      #     python-version: "3.12"
+      # - run: pip install -r requirements.txt
+      # - run: python -m build
+
+      - name: Placeholder (replace with real cross-platform build command)
+        shell: bash
+        run: echo "TODO - wire up this project's build command for ${{ matrix.os }}"
