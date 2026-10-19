@@ -28,4 +28,18 @@ Neither is "more industry standard" than the other - large tech companies run bo
 Per the same GitHub's Well-Architected guide, once you've picked a model:
 - **Monorepo**: one GitHub repository, directories per module; GitHub Actions with path fileters (`on.push.paths`) for incremental/target builds; GitHub Packages for any pieces you still want independently version.
 - ** Polyrepo**: one GitHub repositoryper component, consistent naming (see [naming-convetions/files-and-folders.md](../naming-conventions/files-and-folders.md)), GitHub Packages for shared libraries so you're not hand-rolling dependcy distribution, and an org-level [GitHub Projects:Planning and tracking with Projects
-](https://docs.github.com/en/issues/planning-and-tracking-with-projects)
+](https://docs.github.com/en/issues/planning-and-tracking-with-projects) board if you need a cross-repo view of work.
+- Either way: see [standards/github-repo-setup.md](./github-repo-setup.md) for the concrete per-repository setup checklist, and [governance/governance-mode.md](/governance/governance-model.md) for organization-level structure (teams, owners) that poly repo setups especially depend on.
+
+## Implementation Checklist
+
+1. **Define goals**: project scope/size, team structure, and what you're actually optimizing for (build speed? independent deploys? atomic cross-component changes).
+2. **Choose**: monorepo or polyrepo, explicitly, and write it down (an ADR - see [governance/architecture-decision-records/](/governance/architecture-decision-records/)).
+3. **Plan structures**: directory layout (monorepo) or naming/structure consistency (polyrepo).
+4. **Pick dependency tooling** per the table above.
+5. **Set version control + CI/CD practices** per [standards/branching-strategy.md](/standards/ci-cd-standards.md)
+6. **Set access control**: CODEOWNERS (monorepo) or per-repo permissions + org teams (polyrepo) - see [governance/governance-model.md](/governance/governance-model.md).
+7. **Revise periodically**: this decision isn't permanent - large monorepos sometimes get split, and sprawling polyrepos sometimes consolidate. Revisit if the original goals (step 1) stop being met.
+
+## Further Reading - [GitHub Well-Architected: Repository Architecture Strategy](https://learn.github.com/well-architected/architecture/recommendations/scaling-git-repositories/repository-architecture-strategy) - the source this page is adapted from.
+- [Maintaining a Monorepo](https://monorepo-book.github.io/) - reference by the above as further external reading.
