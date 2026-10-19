@@ -1,0 +1,38 @@
+# Generic, language-agnostic pre-commit hooks. Requires the pre-commit
+# framework: `pip install pre-commit && pre-commit install`.
+# Uncomment the stack-specific sections for your project; the top section
+# runs regardless of language.
+# See code-starter/README.md for the plain-language explanation, and
+# governance/security-practices.md for why secret scanning matters here.
+
+repos:
+  # --- Language-agnostic hygiene (always useful) ---
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ["--maxkb=1000"]
+
+  # --- Secret scanning (always useful; mirrors .github/workflows/security.yml) ---
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.2
+    hooks:
+      - id: gitleaks
+
+  # --- Python example (uncomment if this project uses Python) ---
+  # - repo: https://github.com/astral-sh/ruff-pre-commit
+  #   rev: v0.7.4
+  #   hooks:
+  #     - id: ruff
+  #     - id: ruff-format
+
+  # --- Node/TypeScript example (uncomment if this project uses Node) ---
+  # - repo: https://github.com/pre-commit/mirrors-eslint
+  #   rev: v9.15.0
+  #   hooks:
+  #     - id: eslint
