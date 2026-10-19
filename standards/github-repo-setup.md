@@ -20,7 +20,7 @@ Per both GitHub's and California's recommendations, add at minimum:
 
 ## 3. Secure the Repository (Minimum Bar)
 GitHub's own guidance is explicit that these should be enabled **at minimum**, and they're free for public repositories:
-- **Dependabot alerts** — flags vulnerable dependencies. See [.github/dependabot.yml](/.github/dependabots.yml).
+- **Dependabot alerts** — flags vulnerable dependencies. See [.github/dependabots.yml](/.github/dependabots.yml).
 - **Secret scanning** — detects committed secrets (API keys, tokens).
 - **Push protection** — blocks a push *before* a secret lands in history, rather than just alerting after the fact.
 - **Code scanning** — static analysis (e.g., CodeQL) to catch vulnerabilities/errors early.
