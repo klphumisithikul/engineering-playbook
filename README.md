@@ -11,7 +11,6 @@ The engineering standards below are intentionally stack-agnostic — adapt the s
 ---
 
 ## Table of Contents
-
 - [Goals](#goals)
 - [Who Should Read This Document?](#who-should-read-this-document)
 - [Project Resources](#project-resources)
@@ -38,7 +37,6 @@ The engineering standards below are intentionally stack-agnostic — adapt the s
 ---
 
 ## Goals
-
 - **Streamline Contributions**: Provide clear coding expectations and workflows to ensure effective collaboration.
 - **Preserve Quality**: Maintain high standards for code readability, tests, documentation, and secure supply chains.
 - **Standardize Processes**: Enforce consistent development strategies, branching workflows, CI/CD, GitOps, and container practices across teams.
@@ -48,7 +46,6 @@ The engineering standards below are intentionally stack-agnostic — adapt the s
 ---
 
 ## Who Should Read This Document?
-
 This guide is intended for:
 1. **Developers and Contributors**: To understand and follow repository guidelines, including branching strategies, testing workflows, and code review processes.
 2. **Team Members Reviewing PRs**: To evaluate pull requests against coding and process expectations.
@@ -80,15 +77,16 @@ The repository includes the following key resources to guide contributors:
 
 ```
 engineering-playbook/
-├── .github/                Github-native automation
-├── governance/             SDLC, risks, security programs, ADRs
-├── standards/              The detailed technical/process standards
-├── naming-conventions/     Naming rules
-├── pr-guidelines/          PR policy
-├── templates/              Fill-in-the-blank starter docs
-├── workflows/              Day-to-day process docs
-├── code-starter/           Copy-paste config for a new repo
-├── docs/                   Full index/wiki ── start here
+├── .github/              Automation GitHub reads directly (workflows, issue/PR templates, CODEOWNERS)
+├── governance/            SDLC phases, decision rights, risk, security program, ADRs
+├── standards/              Coding/branching/commit/CI-CD/docker/gitops/GitHub-setup standards
+├── naming-conventions/     Files, branches, variables, infra naming rules
+├── pr-guidelines/          PR policy (size, review SLAs, checklists, industry standards)
+├── templates/              Fill-in-the-blank docs for new projects (README, architecture, API design...)
+├── workflows/              Human process docs (code review, release, incident response)
+├── code-starter/           Copy-paste config for a brand-new repo (.env.example, pre-commit, setup scripts)
+├── docs/                   The docs index/wiki — start at docs/overview.md
+└── README.md               You are here — entry point linking to all of the above
 ```
 
 See [docs/architecture.md](./docs/architecture.md) for why the docs are organized this way (one authoritative home per topic).
@@ -99,7 +97,7 @@ See [docs/architecture.md](./docs/architecture.md) for why the docs are organize
 
 ### Suggested Reading Order
 
-If you're adopting this repo as a template/playbook for a new project, don't read everything front-to-back — most of it is reference material you'll come back to. This template/playbook is broken down into three tiers:
+If you're adopting this repo as a template/playbook for a new project, don't read everything front-to-back — most of it is reference material you'll come back to. Three tiers:
 
 **Tier 1 — read once, before touching anything:**
 1. This README (you're here).
@@ -108,6 +106,7 @@ If you're adopting this repo as a template/playbook for a new project, don't rea
 4. [standards/repository-architecture.md](./standards/repository-architecture.md) — monorepo vs. polyrepo; decide this before step 5 below, since it's expensive to reverse.
 
 **Tier 2 — decide/configure once, at project setup:**
+
 5. [standards/github-repo-setup.md](./standards/github-repo-setup.md) — create and secure the actual GitHub repo (security features, rulesets, CODEOWNERS).
 6. [governance/governance-model.md](./governance/governance-model.md) — roles, approval gates, and org/enterprise settings (owners, teams, SSO/2FA) if applicable.
 7. [standards/branching-strategy.md](./standards/branching-strategy.md) + [naming-conventions/branches.md](./naming-conventions/branches.md) — pick a branching model.
@@ -125,7 +124,6 @@ If you're adopting this repo as a template/playbook for a new project, don't rea
 - `CHANGELOG.md`, `LICENSE`, `LICENSE-DOCS`, `NOTICE`, `CODE_OF_CONDUCT.md` — skim once, revisit at release time.
 
 ### Starting a new project from this template
-
 1. On GitHub, click **"Use this template" → "Create a new repository"** (or `git clone` this repo and re-point its remote).
 2. Replace placeholders throughout the scaffolding: `@your-org/*` in [CODEOWNERS](./.github/CODEOWNERS), contact emails in [SECURITY.md](./SECURITY.md), the copyright line in [LICENSE](./LICENSE)/[LICENSE-DOCS](./LICENSE-DOCS), and repo URLs in [ISSUE_TEMPLATE/config.yml](./.github/ISSUE_TEMPLATE/config.yml).
 3. Uncomment and adapt the stack-specific steps in [`.github/workflows/ci.yml`](./.github/workflows/ci.yml), [`.github/dependabot.yml`](./.github/dependabot.yml), and/or [`.gitlab-ci.yml`](./.gitlab-ci.yml) for your language/toolchain; delete the examples you don't need.
@@ -133,7 +131,6 @@ If you're adopting this repo as a template/playbook for a new project, don't rea
 5. Update this README's title, Goals, and stack-specific sections to describe your actual project.
 
 ### Working in an existing clone
-
 ```bash
 git clone <your-repo-url>
 cd <your-repo-directory>
@@ -268,7 +265,6 @@ Full detail plus a runnable multi-stage `Dockerfile` and `.dockerignore` example
 ---
 
 ## Documentation Standards
-
 When contributing, ensure any relevant documentation is updated as part of the contribution process. Full detail (what to update when, writing guidelines, Markdown conventions) lives in [standards/documentation-standards.md](./standards/documentation-standards.md):
 
 - **README.md**: Add setup instructions or high-level details for major features.
@@ -296,7 +292,6 @@ If you fork this template for your own project, update the copyright line in `LI
 ## Curated Resources
 
 ### Books
-
 - *Clean Code* — Robert C. Martin (code quality)
 - *The Pragmatic Programmer* — Hunt & Thomas (craftsmanship)
 - *Design Patterns* — Gamma et al. (OO design)
@@ -306,7 +301,6 @@ If you fork this template for your own project, update the copyright line in `LI
 - *Domain-Driven Design* — Eric Evans (modeling complexity)
 
 ### Websites
-
 - [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/) — Vincent Driessen's original git-flow post (2010, CC BY-SA); the inspiration for this repo's default branching model — see [standards/branching-strategy.md](./standards/branching-strategy.md) for the full attribution, including the author's own 2020 reflection on when git-flow fits (versioned software) vs. when it doesn't (continuously-delivered web apps, where he recommends GitHub flow/trunk-based instead).
 - [Google Engineering Practices](https://github.com/google/eng-practices) — "The Standard of Code Review," "Speed of Code Reviews," and "Small CLs"; the industry-standard code review process this repo's [pr-guidelines/](./pr-guidelines) are built on.
 - [Conventional Comments](https://conventionalcomments.org/) — a standardized, greppable format (`label: subject`) for PR review comments, used in [pr-guidelines/README.md](./pr-guidelines/README.md#review-comment-format-conventional-comments).
@@ -318,7 +312,6 @@ If you fork this template for your own project, update the copyright line in `LI
 - [WebStandards.org](https://www.webstandards.org/learn/index.html) — curated resources for standards-based development.
 
 ### YouTube Channels
-
 - freeCodeCamp.org — long, structured courses; comprehensive tooling.
 - Traversy Media — project-based build tutorials (JS, Docker, CI/CD).
 - Net Ninja — mini-courses on React, TypeScript, Node.
