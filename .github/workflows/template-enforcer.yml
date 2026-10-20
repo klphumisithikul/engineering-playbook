@@ -22,7 +22,7 @@ jobs:
               { prefix: 'feature/', id: 'FEATURE_TEMPLATE_v1', name: 'Feature' },
               { prefix: 'experiment/', id: 'EXPERIMENT_TEMPLATE_v1', name: 'Experiment' },
               { prefix: 'bugfix/', id: 'BUGFIX_TEMPLATE_v1', name: 'Bugfix' },
-              { prefix: 'hotfix/', id: 'hotfox_template.md', name: 'Hotfix' },
+              { prefix: 'hotfix/', id: 'HOTFIX_TEMPLATE_v1', name: 'Hotfix' },
             ];
 
             const activeRule = rules.find(r => branch.startsWith(r.prefix));
