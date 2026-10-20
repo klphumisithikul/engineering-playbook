@@ -14,6 +14,7 @@ Before submitting this PR, please ensure:
 
 ---
 <!-- ⚠️ DELETE THIS ENTIRE SECTION BEFORE SUBMITTING THE PR ⚠️ -->
+<!-- EXPERIMENT_TEMPLATE_v1 — do not delete this line; .github/workflows/template-enforcer.yml checks for it -->
 
 ## Experiment Summary
 <!-- Briefly explain the purpose of this experiment. Example:
