@@ -1,6 +1,6 @@
 # Commit Message Guidelines
 
-Authoritative detail behind the commit-style mention in [README.md § GitHub Standards](../README.md#github-standards) and [.github/CONTRIBUTING.md § Commit Message Convention](../.github/CONTRIBUTING.md).
+Authoritative detail behind the commit-style mention in [README.md § GitHub Standards](../README.md#github-standards) and [.github/CONTRIBUTING.md § Git Standards](../.github/CONTRIBUTING.md#git-standards).
 
 ## Format: Conventional Commits
 
