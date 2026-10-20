@@ -1,35 +1,73 @@
-# GitHub Standards
+# Setting Up a GitHub Repository to Industry Standard
 
-Authoritative detail behavind [README.md & GitHub Standards](/README.md#github-standards). This file cover **ongoing hygiene** for a repository that already exists - issue/PR intake, rulset, and GitHub Apps/Integrations. For the one-time checklist to standard up a *new* repo, see [standards/github-repo-setup.md](/standards/github-repo-setup.md), which this file complements and is cross-referenced from.
+A concrete, step-by-step checklist for standing up a *new* GitHub repository correctly from day one — not after a security incident forces the issue. Built from GitHub's own official guidance (CC BY 4.0) plus the California Department of Technology's published GitHub standard, which aggregates the same GitHub docs for government engineering teams.
 
-## Issue & PR Templates
+**Sources**: [GitHub Docs: Best practices for repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/best-practices-for-repositories) (CC BY 4.0) · [GitHub Docs: About rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) (CC BY 4.0) · [California ODS/CDT: GitHub Best Practices](https://webstandards.ca.gov/2023/04/19/github-best-practices/) · GitHub's official YouTube channel: [*How to create your first GitHub repository*](https://www.youtube.com/watch?v=-RZ03WHqkaY) and [*Repository Rules: Code Compliance at Scale*](https://www.youtube.com/watch?v=BYajh38HhCs).
 
-GitHub recognizes templates in `.github/`, the repo root, or `docs/` (lookup is case-insensitive) - this repo keeps them all in `.github/`:
-- **Issues**: [.github/ISSUE_TEMPLATE/](/.github/PULL_REQUEST_TEMPLATE/), which can disable blank issues and add `contact_links` that redirect to Discussions or a private security-advisory report instead.
-- **Pull Requests**: GitHub support two mutally-exclusive patterns - 
-    - A single [.github/pull_request_template.md](/.github/pull_request_template.md), applied to every PR automatically.
-    - A [.github/PULL_REQUEST_TEMPLATE/](/.github/PULL_REQUEST_TEMPLATE/) folder with multiple named templates when different PR types (bugfix, feature, hotfix, experiment) need different checklists; contributors pick one from a dropdown when opening the PR, or via `?template=<name>.md` in the compare URL.
+## 1. Create the Repository
+- Pick a name per [naming-conventions/files-and-folders.md](../naming-conventions/files-and-folders.md).
+- Decide **monorepo vs. polyrepo** first if this is a new system, not an afterthought — see [standards/repository-architecture.md](./repository-architecture.md).
+- Add a **README** immediately. Per GitHub's own guidance: "To make it easier for people to understand and navigate your work, we recommend that you create a README file for every repository" — paired with a license, contribution guidelines, and a code of conduct, it "communicates expectations for your project and helps you manage contributions." Use [templates/readme-template.md](../templates/readme-template.md).
+- Confirm repository **visibility** (public/private/internal) matches intent — set at creation, revisited later in **Settings → General → Danger Zone** if it ever needs to change.
+- In **Settings → General → Features**, enable **Issues** (and **Discussions** if you want a public Q&A space instead of email/Slack); leave **Wikis** off unless you specifically need it — most teams keep docs in-repo instead.
+- In **Settings → Collaborators and teams**, add teams (not individuals) with the minimum role needed — Read, Triage, Write, or Maintain/Admin — per [governance/governance-model.md](../governance/governance-model.md)'s org structure, scoped to this repo.
 
-Pick **one** of these two patterns per repo - maintaining both invites drift between the generic template and the specific ones. This template currently shipes both ([pull_request_template.md](/.github/pull_request_template.md) and a [PULL_REQUEST_TEMPLATE/](/.github/PULL_REQUEST_TEMPLATE/) folder with `bugfix_template.md`, `experiement_template.md`, `feature_template.md`, `hotfix_template.md`) as a reference for both approaches; when adopting this repo as a template, delete whicever pattern you don't use.
+## 2. Add the Baseline Files
+Per both GitHub's and California's recommendations, add at minimum:
+- `README.md`, `LICENSE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md` — this template ships all five (see root of this repo). GitHub recognizes these in three locations — repo root, `docs/`, or `.github/` (lookup is case-insensitive) — pick one convention per repo and stick to it; this template keeps `CONTRIBUTING.md` in `.github/` and the other four at root.
+- `.gitignore` to "keep sensitive files out of your repository" — see [.gitignore](../.gitignore).
+- `.github/CODEOWNERS` to "define individuals or teams that are responsible for code in a repository" — see [.github/CODEOWNERS](../.github/CODEOWNERS.md).
+- `.github/ISSUE_TEMPLATE/` (plus `config.yml`) and `.github/pull_request_template.md` (or a `.github/PULL_REQUEST_TEMPLATE/` folder if you need multiple, selectable templates) to standardize issue/PR intake — see [.github/ISSUE_TEMPLATE/](../.github/ISSUE_TEMPLATE) and [.github/pull_request_template.md](../.github/pull_request_template.md); full detail on which pattern to pick (and why this template ships both as a reference) in [standards/github-standards.md § Issue & PR Templates](./github-standards.md#issue--pr-templates).
 
-## Rulsets Preferred Over Classic Branch Protection
+**At scale, across many repos in one GitHub Organization**: create a special `<org>/.github` repository. GitHub treats it as an org-wide fallback — any repo in the org that doesn't define its own `CONTRIBUTING.md`, `SECURITY.md`, issue/PR templates, etc. inherits the org's version automatically (a repo's own files always take precedence when present), and it also supplies the org's public profile README. This is the standard way platform/DevEx teams keep contribution workflows consistent org-wide without copy-pasting these files into every repo — see [governance/governance-model.md § GitHub Organization & Enterprise Governance](../governance/governance-model.md#github-organization--enterprise-governance) for the org-level settings this pairs with.
 
-See [standards/github-repo-setup.md & 5. Protect Branches](/standards/github-repo-setup.md#5-protect-branches--prefer-rulesets-over-classic-branch-protection) for the full classic-vs-rulesets comparison table and the minimum ruleset configuration (required reviews, status checks, no force pushes, conversation resolution. Revisit that ruleset periodically as part of ongoing hygiene - not just at repo creation - especially after adding new CI jobs that should become required status checks, or new teams that need an explicit bypass entry).
+## 3. Secure the Repository (Minimum Bar)
+GitHub's own guidance is explicit that these should be enabled **at minimum**, and they're free for public repositories:
+- **Dependabot alerts** — flags vulnerable dependencies. See [.github/dependabot.yml](../.github/dependabots.yml).
+- **Secret scanning** — detects committed secrets (API keys, tokens).
+- **Push protection** — blocks a push *before* a secret lands in history, rather than just alerting after the fact.
+- **Code scanning** — static analysis (e.g., CodeQL) to catch vulnerabilities/errors early.
+- Additionally: a `SECURITY.md` (see [SECURITY.md](../SECURITY.md)) and **private vulnerability reporting** enabled, so researchers can disclose responsibly instead of filing a public issue.
 
-## Repository Hygiene
+**In the UI**: go to **Settings → Code security** and enable, top to bottom: **Dependabot alerts**, **Dependabot security updates** (auto-opens PRs for vulnerable deps — optionally also **Grouped security updates** to cut down PR noise), **Secret scanning**, **Push protection**, **Code scanning** (click "Set up" → "Default" for a quick CodeQL start, or "Advanced" for a custom workflow), and **Private vulnerability reporting**. All of this can also be configured at the organization level — see step 8. Full detail and the broader security program this plugs into: [governance/security-practices.md](../governance/security-practices.md).
 
-- Periodically re-retun the [Secure the Repository](/standards/github-repo-setup.md#3-secure-the-repository-minimum-bar) checklist - Dependabot, secret scanning, and push protection can be enabled org-wide by default for new repos, but existing repos predating that default won't pick it up automatically.
-- Review [CODEOWNERS](/.github/CODEOWNERS.md) whenever teams or ownership boundaries change; stales entries silently stop requesting review from the right people.
-- Archive or clearly mark repositories that are not longer maintained, so contributors don't open PRs against dead code.
-- Keep **automatically delete head branches** (Settings -> General -> Pull Requests) enabled so merged branches don't pile up; prune any that predate the setting.
+## 4. Favor Branching Over Forking (for Regular Collaborators)
+GitHub's guidance: "regular collaborators work from a single repository, creating pull requests between branches instead of between repositories. Forking is best suited for accepting contributions from people that are unaffiliated with a project." Internal team members get push access + branch workflow (see [standards/branching-strategy.md](./branching-strategy.md)); external open-source contributors fork.
 
-## GitHub Apps & Integration
+## 5. Protect Branches — Prefer Rulesets Over Classic Branch Protection
 
-- Grant GitHub Apps and OAuth Apps the minimum repository/organization permissions they need - review the installed-Apps list (Settings -> Integration) periodically and remove anything unused.
-- Prefer GitHub Apps over personal-access-token-based integrations where possible: Apps are scoped per-repository and don't inherit a human's full account permissions.
-- At the organization level, restrict which OAuth Apps members may approve without admin sign-off — see [governance/governance-model.md § GitHub Organization & Enterprise Governance](../governance/governance-model.md#github-organization--enterprise-governance).
+Both work, but GitHub now recommends **rulesets** as the more capable mechanism:
+
+| | Classic Branch Protection | Rulesets |
+|---|---|---|
+| Rules per branch | One rule set applies | Multiple rulesets can apply simultaneously (merged/aggregated — most restrictive version of any conflicting rule wins) |
+| Scope | Per-repository only | Per-repository, or **organization-wide** targeting many repos at once (GitHub Enterprise) |
+| Visibility | Admin-only | Anyone with read access can view active rulesets — useful for audits |
+| Toggling | Delete to disable | Can be set to "Disabled" without deleting (keeps config for later) |
+| Bypass control | Admin bypass is implicit | Explicit, auditable bypass list (specific teams/apps/roles) |
+
+Minimum ruleset for `main`/`develop`, matching [standards/branching-strategy.md § Merge Policy](./branching-strategy.md#merge-policy): require pull request review (≥2 approvals), require status checks to pass (lint/test/build/security — see `.github/workflows/`), block force pushes, require linear history or signed commits if your team has adopted that, and require conversation resolution before merging so review comments can't be silently ignored.
+
+**In the UI**: go to **Settings → Rules → Rulesets → New ruleset → New branch ruleset**. Name it (e.g. `main-protection`), set **Enforcement status** to Active, add `main` (and `develop`) under **Target branches**, leave the **Bypass list** empty unless a specific break-glass role/app needs one, then under **Branch rules** check: **Require a pull request before merging** (set required approvals to 2; check "Dismiss stale pull request approvals when new commits are pushed" and "Require conversation resolution before merging"), **Require status checks to pass** (add each CI job name from `.github/workflows/`, and check "Require branches to be up to date before merging"), and **Block force pushes**. At scale, create the same ruleset at the **organization** level instead (`Settings → Rules` for the org) to target many repos at once.
+
+Also set these complementary settings under **Settings → General → Pull Requests** (not part of a ruleset, but just as standard): uncheck "Allow merge commits" and "Allow rebase merging", leaving only **"Allow squash merging"** checked to keep history clean (matches the Merge Policy linked above); check **"Always suggest updating pull request branches"**; and check **"Automatically delete head branches"** after merge so stale branches don't pile up.
+
+## 6. Set Up Git LFS if You Have Large Files
+GitHub limits file sizes in regular Git. If the project needs binaries (datasets, media, compiled artifacts that must be versioned), use [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage) rather than committing them raw. Prefer not committing build artifacts at all — see [.gitignore](../.gitignore) — and keep spreadsheets/presentations in a tool built for them, not Git.
+
+## 7. Harden GitHub Actions
+See [governance/security-practices.md § GitHub Actions Hardening](../governance/security-practices.md#github-actions-hardening) for the full checklist (pinning third-party actions to a commit SHA, restricting `GITHUB_TOKEN` permissions, OIDC instead of long-lived cloud credentials, etc.).
+
+**In the UI**: in **Settings → Actions → General**, set **Actions permissions** to "Allow select actions and reusable workflows" and explicitly allow-list the actions you use (forces pinning to vetted actions instead of "Allow all actions"); set **Workflow permissions** to **"Read repository contents permission"** as the default `GITHUB_TOKEN` scope, granting write only per-workflow via a `permissions:` block when actually needed; and uncheck **"Allow GitHub Actions to create and approve pull requests"** unless a specific workflow needs it. For secrets, prefer **Settings → Secrets and variables → Actions** scoped at the organization level (rather than duplicating per repo) and OIDC over long-lived cloud credentials wherever the provider supports it.
+
+## 8. Set Organization-Level Governance (if applicable)
+If this repo lives inside a GitHub Organization/Enterprise rather than a personal account, see [governance/governance-model.md § GitHub Organization & Enterprise Governance](../governance/governance-model.md#github-organization--enterprise-governance) for owners, teams, SSO, and 2FA requirements — these are set once per organization, not per repository, but they determine how safely *every* repository in the org can operate.
+
+## Hands-On Practice
+- GitHub's own [Introduction to Repository Management](https://github.com/skills/introduction-to-repository-management/) Skills exercise.
+- GitHub's official video walkthroughs: [*How to create your first GitHub repository: A beginner's guide*](https://www.youtube.com/watch?v=-RZ03WHqkaY) and [*Repository Rules: Code Compliance at Scale*](https://www.youtube.com/watch?v=BYajh38HhCs) (the ruleset enforcement model summarized in step 5).
 
 ## Related
-- [standards/github-repo-setup.md](./github-repo-setup.md) — one-time checklist for a brand-new repository.
-- [standards/branching-strategy.md](./branching-strategy.md) — the merge policy that rulesets enforce.
-- [standards/commit-message-guidelines.md](./commit-message-guidelines.md) — commit style, enforced alongside the above.
+- [standards/github-standards.md](./github-standards.md) — ongoing hygiene once the repo exists.
+- [standards/repository-architecture.md](./repository-architecture.md) — the monorepo/polyrepo decision to make before step 1.
+- [templates/project-setup-template.md](../templates/project-setup-template.md) — folder structure to put inside the repo once it exists.
