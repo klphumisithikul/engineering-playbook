@@ -181,17 +181,18 @@ To ensure a smooth development process, follow these guidelines before submittin
 Before opening a PR, verify that the following steps are complete:
 
 1. **Code Quality**:
-    -  Run linting tools (`black`, `flake8`) and fix any errors or warnings:
+    - Run your stack's linting/formatting tools and fix any errors or warnings, e.g.:
         ```bash
-        black .
-        flake8 .
+        black . && flake8 .        # Python
+        npm run lint                # Node
         ```
     - Refactor code if necessary for readability, maintainability, or scalability.
 
 2. **Testing**:
-    - Run tests locally and ensure all tests pass functionality:
+    - Run tests locally and ensure all tests pass, e.g.:
          ```bash
-          pytest
+         pytest        # Python
+         npm test       # Node
         ```
    - Add relevant **unit, integration, and regression tests** for new features or bug fixes.  
    - Validate edge cases and unexpected input scenarios.  
@@ -282,11 +283,10 @@ When merging, use **Squash-and-Merge** to maintain a clean commit history.
 
 ### Code, Git, and Testing Standards
 #### Code Standards:
-- Use `black` for formatting and `flake8` for linting in Python.
+- Use your stack's standard formatter/linter and keep it enforced in CI — e.g. `black`/`flake8` + PEP 8 for Python, `eslint`/`prettier` for JS/TS, `gofmt`/`golangci-lint` for Go. See [standards/coding-standards.md](../standards/coding-standards.md) for the full, stack-agnostic detail.
 - Write concise, descriptive commit messages:
   - Format: `type(scope): message`.
   - Example: `feat(model): add churn prediction pipeline`.
-  - Follow PEP-8 guidelines for Python code: https://www.python.org/dev/peps/pep-0008/
 
 #### Git Standards:
 - Write concise conventional commit messages in the format:
@@ -297,7 +297,7 @@ When merging, use **Squash-and-Merge** to maintain a clean commit history.
 
 #### Testing Standards:
 - Add tests for any significant changes.
-- Validate your contributions by running all tests locally before pushing using `pytest`.
+- Validate your contributions by running your stack's test suite locally before pushing (e.g. `pytest`, `npm test`, `go test ./...`).
 - Validate key scenarios, including edge cases.
 - Aim for high test coverage:
   - Target at least 80% code coverage.
