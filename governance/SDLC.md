@@ -17,7 +17,7 @@ This repository also aligns its phase definitions with **ISO/IEC/IEEE 12207**, t
 | **3. Development** | Implementation following standards | [standards/](../standards), [naming-conventions/](../naming-conventions), [code-starter/](../code-starter) |
 | **4. Testing** | Verification & validation against requirements | [standards/coding-standards.md](../standards/coding-standards.md) (testing section), `.github/workflows/ci.yml` |
 | **5. Deployment** | Release to staging/production | [standards/ci-cd-standards.md](../standards/ci-cd-standards.md), [standards/gitops-standards.md](../standards/gitops-standards.md), [workflows/release-workflow.md](../workflows/release-workflow.md) |
-| **6. Maintenance** | Monitoring, incident response, patching, deprecation | [governance/risk-management.md](./risk-management.md), [workflows/incident-response-workflow.md](../workflows/incident-response-workflow.md), `SECURITY.md` |
+| **6. Maintenance** | Monitoring, incident response, patching, deprecation | [governance/risk-management.md](./risk-management.md), [governance/security-practices.md § Resolving Dependabot Alerts](./security-practices.md#resolving-dependabot-alerts), [workflows/incident-response-workflow.md](../workflows/incident-response-workflow.md), `SECURITY.md` |
 
 These phases are **iterative, not strictly sequential** — in an Agile/DevOps model they repeat every sprint or every deploy, not once per project.
 
