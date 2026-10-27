@@ -13,13 +13,15 @@ The "wiki inside the repo." Start here, then follow links out to the authoritati
 | Set up a brand-new GitHub repository to industry standard | [standards/github-repo-setup.md](../standards/github-repo-setup.md) |
 | Decide monorepo vs. polyrepo | [standards/repository-architecture.md](../standards/repository-architecture.md) |
 | Fill out a PR, issue, or ADR | [.github/pull_request_template.md](../.github/pull_request_template.md), [.github/ISSUE_TEMPLATE/](../.github/ISSUE_TEMPLATE), [governance/architecture-decision-records/](../governance/architecture-decision-records) |
+
 | Know how CI/CD and deployment work | [standards/ci-cd-standards.md](../standards/ci-cd-standards.md), [standards/gitops-standards.md](../standards/gitops-standards.md) |
 | Copy ready-to-use config into a new repo | [code-starter/](../code-starter) |
 | Follow a day-to-day process (review, release, incident) | [workflows/](../workflows) |
 | Report a security vulnerability | [SECURITY.md](../SECURITY.md) |
 | Onboard to **this** repo specifically | [docs/onboarding.md](./onboarding.md) |
 | Troubleshoot a problem using this template | [docs/troubleshooting.md](./troubleshooting.md) |
-| "Run" this repo (it has no app — here's what that means) | [docs/how-to-run.md](./how-to-run.md) |
+| "Run" this repo (it has no app — here's what that means) | [docs/how-to-run-repo.md](./how-to-run-repo.md) |
+| Summarize this repo's standards for a non-technical/management audience (e.g. Confluence) | [.github/CONFLUENCE_README.md](../.github/CONFLUENCE_README.md) (optional) |
 
 ## Repository Map
 
