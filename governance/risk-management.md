@@ -23,6 +23,8 @@ Score = **Likelihood (1-3) × Impact (1-3)**, giving a 1-9 scale:
 | 2-3 | Medium | Scheduled into near-term backlog |
 | 1 | Low | Tracked, revisit opportunistically |
 
+For dependency-vulnerability alerts specifically, map Dependabot's Critical/High/Medium/Low severity onto this same scale (e.g., Critical/High → 7-9, Medium → 4-6, Low → 2-3) rather than keeping a separate SLA table — tighten the response for any CVE in CISA's [Known Exploited Vulnerabilities (KEV) catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) regardless of where it otherwise scores. See [governance/security-practices.md § Resolving Dependabot Alerts](./security-practices.md#resolving-dependabot-alerts) for the full triage/remediation lifecycle.
+
 ## Process
 
 1. **Identify**: Anyone can flag a risk via a GitHub issue (tag `risk`) or during design review/ADR.
@@ -38,4 +40,4 @@ Automated by default in this template:
 - `.github/workflows/security.yml` — secret scanning (gitleaks) + filesystem vulnerability scanning (Trivy).
 - `.github/workflows/dependency-review.yml` — blocks PRs introducing known-vulnerable or disallowed-license dependencies.
 
-See [governance/security-practices.md](./security-practices.md) for the fuller security program this plugs into.
+See [governance/security-practices.md](./security-practices.md) for the fuller security program this plugs into, and [governance/security-practices.md § Resolving Dependabot Alerts](./security-practices.md#resolving-dependabot-alerts) specifically for the triage/remediation lifecycle (SLA scoring lives in this file's [Simple Risk Scoring](#simple-risk-scoring) table above, not duplicated there).
