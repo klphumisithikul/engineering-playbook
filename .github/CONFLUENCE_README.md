@@ -1,5 +1,7 @@
 # 📖 Project Engineering Playbook: [Project Name] (OPTIONAL)
 
+A condensed, management-facing summary of this repo's engineering standards, meant to be copy-pasted into Confluence (or an equivalent wiki) for stakeholders who won't read the repo directly. Fill in the brackets; the authoritative, detailed versions of everything summarized here live in [`.github/CONTRIBUTING.md`](./CONTRIBUTING.md), [`README.md`](../README.md), and [`governance/`](../governance) — update those first, then reflect significant changes here.
+
 Last Updated: [YYYY-MM-DD] | Status: [Active] | Owner: [Name]
 
 ## 🎯 Executive Summary
@@ -9,12 +11,6 @@ This project follows a Standardized Engineering Playbook designed to ensure code
 ## 🛠 Project Governance & Resources
 
 The project's "Source of Truth" is maintained in GitHub. Use the links below for deep dives into specific technical standards:
-
-Resource	Purpose	Audience
-README.md	High-level overview and setup.	Everyone
-CONTRIBUTING.md	Detailed technical workflows & branching.	Developers
-Pull Request Templates	Standardized submission checklists.	Contributors / Reviewers
-Branch Protections	Automated safeguards for main and develop.	Security / DevOps
 
 | **Resource**           | **Purpose**                      | **Audience**        |
 |---------------------|-------------------------------|---------------------------------|
@@ -36,7 +32,7 @@ We utilize a structured branching model to isolate development work from product
 
 - Bugfix Branches: Resolution of non-urgent technical debt or errors.
 
-- Hotfix Branches: URGENT production fixes. These bypass the standard queue to patch the main branch immediately.
+- Hotfix Branches: URGENT production fixes. These skip the normal backlog/prioritization queue for immediate attention, but still go through the same required Pull Request and review process as any other branch — no direct, unreviewed pushes to `main`.
 
 _Governance Note: All code changes require a Pull Request (PR) and must be Squashed and Merged to maintain a clean project history for auditing._
 
@@ -46,9 +42,9 @@ Before code is accepted into the project, it must meet the following organizatio
 
 1. Peer Review: Every change requires approval from at least 2 qualified reviewers.
 
-2. Automated Testing: Targeted code coverage is 80%. All pytest suites must pass.
+2. Automated Testing: Targeted code coverage is 80%. All automated test suites for this stack must pass.
 
-3. Code Styling: Strict adherence to PEP-8, enforced by Black and Flake8.
+3. Code Styling: Strict adherence to this stack's standard style guide, enforced by its formatter/linter (e.g. Black/Flake8 for Python, ESLint/Prettier for JS/TS).
 
 4. Documentation: Inline comments and updates to high-level documentation are mandatory for every feature.
 
