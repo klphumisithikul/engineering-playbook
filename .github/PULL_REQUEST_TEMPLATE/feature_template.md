@@ -14,6 +14,7 @@ Before submitting this PR, please ensure:
 
 ---
 <!-- ⚠️ DELETE THIS ENTIRE SECTION BEFORE SUBMITTING THE PR ⚠️ -->
+<!-- FEATURE_TEMPLATE_v1 — do not delete this line; .github/workflows/template-enforcer.yml checks for it -->
 
 ## Feature Summary
 <!-- Describe the purpose of this new feature. Example:  
@@ -34,4 +35,3 @@ Before submitting this PR, please ensure:
 1. Run `pytest churn_model_tests.py`.  
 2. Use Postman to make a POST request to `/predict` and validate responses.
 -->
-
