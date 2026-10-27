@@ -50,6 +50,23 @@ From the same source, [Speed of Code Reviews](https://google.github.io/eng-pract
 
 From [Small CLs](https://google.github.io/eng-practices/review/developer/small-cls.html): small, self-contained PRs are reviewed faster, reviewed more thoroughly, less likely to introduce bugs, less wasted work if rejected, easier to merge, easier to design well, and simpler to roll back. A reviewer has standing to reject a PR for being too large on that basis alone, independent of whether the content is otherwise correct.
 
+### PR Labels
+
+This repo's automation (`.github/labeler.yml`, `.github/workflows/auto-label.yml`, `.github/workflows/stale.yml`) currently applies six labels: `documentation`, `ci-cd`, `dependencies`, `security` (path-based, auto-applied on every PR open/sync) and `stale`, `pinned` (lifecycle, from the stale bot). There's no broader taxonomy defined beyond that today — if you add more labels, follow the practices below rather than improvising ad hoc ones.
+
+GitHub's own [Managing labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) guidance (CC BY 4.0) is the baseline: keep the label set small, give each one a clear and specific name/description, and use color consistently (e.g., one hue per category) so the set stays scannable instead of sprawling — label sprawl (dozens of overlapping, undocumented labels) is a common anti-pattern it explicitly warns against.
+
+Common categories used across engineering orgs, layered on top of what's already automated here:
+
+| Category | Examples | Notes |
+|---|---|---|
+| Type | `bug`, `feature`, `chore`, `refactor` | Mirrors this repo's own branch-prefix convention in [naming-conventions/branches.md](../naming-conventions/branches.md) (`feature/`, `bugfix/`, `experiment/`, `hotfix/`) — keep the two in sync if you add these. |
+| Status | `needs-review`, `blocked`, `do-not-merge`, `work-in-progress` | Signals where a PR stands beyond CI's pass/fail; useful for draft PRs or ones blocked on an external dependency. |
+| Priority/Severity | `priority:high`, `severity:critical` | More common on issue trackers than PRs; only worth adding if triage volume justifies the overhead. |
+| Size | `size/XS` ... `size/XL` | Auto-computed from diff size (e.g. via a GitHub Action like `pascalgn/size-label-action`). Reinforces the [Size & Scope](#size--scope) policy above by making oversized PRs visible at a glance instead of relying on reviewers to notice. |
+
+None of these are implemented in this repo today — adding them means extending `.github/labeler.yml` (or repo label settings), not just writing about them. Whatever subset you adopt, document the label → meaning mapping here so it doesn't live only in someone's head.
+
 ### Review Comment Format (Conventional Comments)
 
 Pairs with [standards/commit-message-guidelines.md](../standards/commit-message-guidelines.md) (which standardizes *commit* messages) — [Conventional Comments](https://conventionalcomments.org/) (CC BY 3.0) standardizes *review comments* so authors can tell blocking feedback from optional feedback at a glance, and comments become greppable:
@@ -79,5 +96,6 @@ If a PR is blocked (disagreement, no reviewer response, unclear requirement), se
 The "Industry-Recognized Standards" section above quotes and adapts:
 - Google's [Engineering Practices documentation](https://github.com/google/eng-practices) ("The Standard of Code Review," "Speed of Code Reviews," "Small CLs") — licensed [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
 - [Conventional Comments](https://conventionalcomments.org/) — licensed [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
+- GitHub's [Managing labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) documentation (PR Labels section) — [docs.github.com content is licensed CC BY 4.0](https://github.com/github/docs/blob/main/LICENSE-DOCS).
 
-Both are attribution-only (no ShareAlike), so unlike the git-flow material in [standards/branching-strategy.md](../standards/branching-strategy.md), this section is compatible with this repo's own [CC BY 4.0 docs license](../LICENSE-DOCS) — CC BY 3.0 content may be used under the terms of a later Creative Commons BY version per CC's own license-compatibility guidance, provided attribution to the original authors (Google; Conventional Comments) is retained, as it is above.
+All three are attribution-only (no ShareAlike), so unlike the git-flow material in [standards/branching-strategy.md](../standards/branching-strategy.md), this section is compatible with this repo's own [CC BY 4.0 docs license](../LICENSE-DOCS) — CC BY 3.0 content may be used under the terms of a later Creative Commons BY version per CC's own license-compatibility guidance, provided attribution to the original authors (Google; Conventional Comments; GitHub) is retained, as it is above.
