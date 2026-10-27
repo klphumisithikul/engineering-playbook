@@ -13,6 +13,33 @@ Treat CI/CD as a platform product: shared templates, explicit control flow, immu
 - Enable security scanning (SAST/DAST/dependency scanning, see [governance/security-practices.md](../governance/security-practices.md)) and make it blocking for critical issues.
 - Use child pipelines/review apps (GitLab) or PR preview environments (GitHub) for faster feedback.
 
+### Pipeline Diagram
+
+```mermaid
+flowchart LR
+    A["Lint"] --> B["Unit tests"]
+    B --> C["Build"]
+    C --> D["Integration tests"]
+    D --> E["Security scan<br/>(SAST/DAST/dependency)"]
+    E --> F{"allow_failure: false<br/>blocking on critical issues?"}
+    F -- Fails --> G["Pipeline stops here<br/>(fix & re-run)"]
+    F -- Passes --> H["Deploy to staging"]
+    H --> I{"Branch == main?"}
+    I -- No --> J["Stops at staging<br/>(feature/bugfix/hotfix)"]
+    I -- Yes --> K["Deploy to production<br/>(manual approval)"]
+```
+
+ASCII fallback (same flow, terminal-friendly):
+
+```
+Lint ──► Unit ──► Build ──► Integration ──► Security ──► Staging ──► Production
+                                             (blocking)   (needs:     (main only,
+                                                            integration  manual approval)
+                                                            + security)
+```
+
+Each stage runs only if the prior one passes (`needs:`/job dependencies above) — a failure stops the pipeline at that stage rather than continuing with a red upstream job.
+
 ## Example: `.gitlab-ci.yml` (thin service repo, with shared templates)
 
 Once you have a central `ci-templates` project, migrate the standalone `.gitlab-ci.yml` at the repo root toward this pattern:
