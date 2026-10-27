@@ -185,7 +185,7 @@ To ensure a smooth development process, follow these guidelines before submittin
 
 Before opening a PR, verify that the following steps are complete:
 
-1. Code passes linting (`black`, `flake8`) and automated tests (`pytest`).
+1. Code passes your stack's linting/formatting checks and automated tests (e.g. `black`/`flake8` + `pytest` for Python, `eslint`/`prettier` + `npm test` for Node).
 2. Commit messages follow conventional, imperative style (subject ≤ 50 chars, body wrapped ≤ 72 chars, explains *why*):
     ```plaintext
     feat(api): add endpoint for retrieving user profiles
