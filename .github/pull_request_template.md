@@ -1,44 +1,98 @@
 <!-- ⚠️ DELETE THIS ENTIRE SECTION BEFORE SUBMITTING THE PR ⚠️ -->
 
-# Bugfix PR Template
-## Usage Instructions 
+### ⚠️ STOP: Select the Correct Template
+To ensure we follow our **Engineering Playbook**, please click the link that matches your branch type to reload this PR with the correct checklist (replace `<org>/<repo>` below with this repository's actual path):
+
+- [🚀 Feature PR](https://github.com/<org>/<repo>/compare/develop...HEAD?expand=1&template=feature_template.md)
+- [🧪 Experiment PR](https://github.com/<org>/<repo>/compare/develop...HEAD?expand=1&template=experiment_template.md)
+- [🐛 Bugfix PR](https://github.com/<org>/<repo>/compare/develop...HEAD?expand=1&template=bugfix_template.md)
+- [🔥 Hotfix PR](https://github.com/<org>/<repo>/compare/main...HEAD?expand=1&template=hotfix_template.md)
+
+*If none of the above apply, continue following the steps below...*
+
+# Pull Request Template
+
+## Usage Instructions
+
 ### Checklist for Usage Instructions & Submission:
+
 Before submitting this PR, please ensure:
-1. [ ] **Add Reviewers**: At least **2 reviewers** have been added to this PR using the Reviewers panel.  
-2. [ ] **Commit Squashing**: Ensure commits have been **squashed** before merging (or commits will be squashed during the merge process).  
-3. **Verify that**: 
-    - [ ] Code passes linting checks (use `black`, `flake8`) with no error.  
-    - [ ] Tests have been added for new features or bug fixes.  
-    - [ ] Documentation (README, notebooks, etc.) is updated if applicable. 
+
+1. [ ] **Add Reviewers**: At least **2 reviewers** have been added to this PR using the Reviewers panel. 
+
+2. [ ] **Commit Squashing**: Ensure commits have been **squashed** before merging (or commits will be squashed during the merge process). 
+
+3. **Verify that**:
+   - [ ] Code passes your stack's linting/formatting checks with no errors.
+   - [ ] Tests have been added for new features or bug fixes. 
+   - [ ] Documentation (README, notebooks, etc.) is updated if applicable.
+
 4. [ ] **Delete the Usage Instructions section** before submitting.
 
----
 <!-- ⚠️ DELETE THIS ENTIRE SECTION BEFORE SUBMITTING THE PR ⚠️ -->
-<!-- BUGFIX_TEMPLATE_v1 — do not delete this line; .github/workflows/template-enforcer.yml checks for it -->
 
-## Bugfix Summary
-<!-- Summarize the bug fixed. Example: 
-- Fixes incorrect handling of timezones during datetime parsing.
+## PR Summary
+
+<!-- Briefly describe what this PR does. 
+Example:
+   - Adds a notebook for EDA of historic data.
 -->
 
 
-## Steps to Reproduce
-<!-- Provide steps to reproduce the bug. Example:
-1. Pass a timestamp in any timezone.
-2. Run the `datetime_parser.py` script. 
--->
-1.  
-2.  
-3.  
+## Related Issues/Tickets
 
-## Fix Implementation
-<!-- Details on the resolution. Example:
-- Switched parser from `strptime()` to `dateutil.parser`.
+<!-- Add relevant links to Jira tickets or GitHub issues. 
+Example:
+   - Closes #123
+   - Related to [PROJ-456](https://jira-url.com/browse/PROJ-456)
 -->
 
 
-## Checklist
-<!-- Provide checklist to ensure bugfix quality. Example:
-- [ ] Bugfix verified with multiple timezones.
-- [ ] Updated failing tests in `test_datetime_parser.py`. 
+## Type of Change 
+
+<!-- Select one: -->
+
+- [ ] New Feature
+- [ ] Bugfix 
+- [ ] Documentation Update
+- [ ] Refactor
+- [ ] Other: __________________
+
+
+## Key Changes 
+
+<!-- List major changes. 
+Example:
+   - Added an EDA notebook.
+   - Fixed NaN handling in regression code.
+   - Updated README with testing instructions.
+--> 
+
+
+## Testing Instructions 
+
+<!--  Provide instructions for reviewers to manually reproduce, validate, or test this PR's changes. 
+Example:
+   1. Run `scripts/run_tests.sh`.
+   2. Verify accuracy of predictions from `model.py`
+   3. Confirm outputs in `logs/output.txt`.
+--> 
+
+1. 
+2. 
+3. 
+
+## Screenshots (if applicable) 
+
+<!-- Add applicable screenshots: visualizations, tables, or graphs. 
+Example:
+   - Screenshot: ![Feature Screenshot](example-screenshot.png)
+--> 
+
+
+## Additional Notes 
+
+<!-- Provide any other context or details to help reviewers understand your changes. 
+Example:
+   - This PR introduces a new dependency: pandas>=1.4.0. Run `pip install -r requirements.txt` to test locally.
 -->
