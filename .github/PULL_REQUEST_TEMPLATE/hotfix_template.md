@@ -13,7 +13,8 @@ Before submitting this PR, please ensure:
 4. [ ] **Delete the Usage Instructions section** before submitting.
 
 ---
-<!-- ⚠️ DELETE THIS ENTIRE SECTION BEFORE SUBMITTING THE PR ⚠️ --> 
+<!-- ⚠️ DELETE THIS ENTIRE SECTION BEFORE SUBMITTING THE PR ⚠️ -->
+<!-- HOTFIX_TEMPLATE_v1 — do not delete this line; .github/workflows/template-enforcer.yml checks for it -->
 
 ## Problem Statement
 <!-- Briefly describe the critical issue being addressed. Example:
