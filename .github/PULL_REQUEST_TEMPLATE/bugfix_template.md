@@ -14,6 +14,7 @@ Before submitting this PR, please ensure:
 
 ---
 <!-- ⚠️ DELETE THIS ENTIRE SECTION BEFORE SUBMITTING THE PR ⚠️ -->
+<!-- BUGFIX_TEMPLATE_v1 — do not delete this line; .github/workflows/template-enforcer.yml checks for it -->
 
 ## Bugfix Summary
 <!-- Summarize the bug fixed. Example: 
